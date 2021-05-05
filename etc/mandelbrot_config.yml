@@ -1,0 +1,13 @@
+numIter: 1
+x_0: -1.5
+y_0: -1
+x_M: 1.5 
+y_M: 1
+N_xmax: 750
+N_ymax: 500
+n: 2000
+R_c: 100
+reInsert: -0.75
+imInsert: 0.1
+nameResult: result.dat
+maxIterations: 100000

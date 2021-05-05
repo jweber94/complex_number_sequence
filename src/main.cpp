@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <stdlib.h>
+#include <yaml-cpp/yaml.h>
 
 #include "complex.hpp"
 #include "mandelbrot_utils.cpp"
@@ -10,20 +11,31 @@ int main (){
 
 	using namespace std;
 
-	// Variablendeklarationen
+	// parse the config for the run
+	std::string config_path;
+	std::cout << "Please insert the input path\n";  
+	std::cin >> config_path; 
+	std::cout << "\n"; 
+
+	YAML::Node config = YAML::LoadFile(config_path); 
+
+	// variables
 	int numIter;
 	double x_0, y_0, x_M, y_M;
 	int N_xmax, N_ymax;
 	int n;
-	size_t maxIterations;
 	double R_c;
-	string nameResult;
 	double reInsert, imInsert;
 	double delta_x, delta_y;
+	string nameResult;
+	size_t maxIterations;
 
-	// Ergebnisvariablen
 	int n_iter_temp;
-	ofstream resultStream;	// outstream
+	ofstream resultStream;	
+
+
+	std::cout << "This is the number of iterations: " << config['n'].as<int>() << " - should be 2000\n"; 
+	std::cout << "CAUTION: DEBUG END\n"; 
 
 	// Einlesen der Uerbergabeparameter
 	cout << "Bitte Nummer der Iteratotionsvorschrift eingeben" << endl;
