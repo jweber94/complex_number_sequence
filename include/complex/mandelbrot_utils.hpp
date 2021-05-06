@@ -23,7 +23,8 @@ struct run_config
 int calcNumConvergence(MyComplex & z_i_1, MyComplex & c, int n, double r_c, size_t n_max);
 void load_run_configuration(YAML::Node & yaml_reader, const run_config & config_struct);
 void calculate_convergence_radius(std::ofstream & out_stream, const run_config & run_configuration); 
-
-// FIXME: Here comes the yaml parser
+int update_rule_case_1(MyComplex & z_0, MyComplex & c_0, const double x_0, const double y_0, const double delta_x, const double delta_y, const int i, const int j, double R_c, int maxIterations); 
+int update_rule_case_2(MyComplex & z_0, MyComplex & c_0, const double x_0, const double y_0, const double delta_x, const double delta_y, const int i, const int j, double R_c, int maxIterations); 
+int update_rule_case_3(MyComplex & z_0, MyComplex & c_0, const double x_0, const double y_0, const double delta_x, const double delta_y, const int i, const int j, double R_c, int maxIterations); 
 
 #endif /* MANDELBROT_UTILS */
