@@ -10,4 +10,4 @@ R_c: 100
 reInsert: -0.75
 imInsert: 0.1
 nameResult: result.dat
-maxIterations: 100000
+maxIterations: 1000
