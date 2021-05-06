@@ -2,6 +2,23 @@
 
 #include <iostream>
 
+void load_run_configuration(YAML::Node & yaml_reader, run_config & config_struct)
+{
+	// Iteration over struct members is not useful due to the different datatypes of the entrys
+	config_struct.numIter = yaml_reader["numIter"].as<int>(); 
+	config_struct.x_0 = yaml_reader["x_0"].as<double>();  
+	config_struct.y_0 = yaml_reader["y_0"].as<double>(); 
+	config_struct.x_M = yaml_reader["x_M"].as<double>(); 
+	config_struct.y_M = yaml_reader["y_M"].as<double>();
+	config_struct.N_xmax = yaml_reader["N_xmax"].as<int>();
+	config_struct.N_ymax = yaml_reader["N_ymax"].as<int>();
+	config_struct.R_c = yaml_reader["R_c"].as<double>();
+	config_struct.reInsert = yaml_reader["reInsert"].as<double>(); 
+	config_struct.imInsert = yaml_reader["imInsert"].as<double>();
+	config_struct.nameResult = yaml_reader["nameResult"].as<std::string>();
+	config_struct.maxIterations = yaml_reader["maxIterations"].as<int>();
+}
+
 int calcNumConvergence(MyComplex & z_i_1, MyComplex & c, int n, double r_c, size_t n_max){
 
 	MyComplex resultIteration_i = z_i_1;
@@ -52,32 +69,14 @@ int update_rule_case_3(MyComplex & z_0, MyComplex & c_0, const double x_0, const
 	return step_result; 
 }
 
-void load_run_configuration(YAML::Node & yaml_reader, run_config & config_struct)
-{
-	// Iteration over struct members is not useful due to the different datatypes of the entrys
-	config_struct.numIter = yaml_reader["numIter"].as<int>(); // choose calculation rule
-	config_struct.x_0 = yaml_reader["x_0"].as<double>();  
-	config_struct.y_0 = yaml_reader["y_0"].as<double>(); 
-	config_struct.x_M = yaml_reader["x_M"].as<double>(); 
-	config_struct.y_M = yaml_reader["y_M"].as<double>();
-	config_struct.N_xmax = yaml_reader["N_xmax"].as<int>();
-	config_struct.N_ymax = yaml_reader["N_ymax"].as<int>();
-	config_struct.R_c = yaml_reader["R_c"].as<double>();
-	config_struct.reInsert = yaml_reader["reInsert"].as<double>(); 
-	config_struct.imInsert = yaml_reader["imInsert"].as<double>();
-	config_struct.nameResult = yaml_reader["nameResult"].as<std::string>();
-	config_struct.maxIterations = yaml_reader["maxIterations"].as<int>();
-	//config_struct.n = yaml_reader["n"].as<int>(); // exponnent TODO: pull the exponent out and create a function pointer to show my skills ;-) 
-}
-
 void calculate_convergence_radius(std::ofstream & out_stream, const run_config & run_configuration)
 {
 	// function pointer as parameter function 
 	double delta_x; 
 	double delta_y;
 	int n_iter_temp;
-	MyComplex z_0; //(run_configuration.x_0, run_configuration.y_0);
-	MyComplex c_0; //(run_configuration.reInsert, run_configuration.imInsert);
+	MyComplex z_0; 
+	MyComplex c_0; 
 	int (*update_formula)(MyComplex & z_0, MyComplex & c_0, const double x_0, const double y_0, const double delta_x, const double delta_y, const int i, const int j, double R_c, int maxIterations);
 
 	// calculate the step sizes based on the given parameters
@@ -125,7 +124,7 @@ void calculate_convergence_radius(std::ofstream & out_stream, const run_config &
 		}
 		default: 
 		{
-			std::cout << run_configuration.numIter << " ist kein zulaessiger Wert fuer die Iterationsvorschrift! Das Programm wird beendet\n";
+			std::cout << run_configuration.numIter << " is no valid calculation case number. The program will end now.\n";
 			exit(0);
 		}
 	}

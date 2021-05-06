@@ -16,7 +16,7 @@ int main (){
 	// std::cout << "Please insert the input path\n";  
 	// std::cin >> config_path; 
 	// std::cout << "\n"; 
-	config_path = "/home/jens/Schreibtisch/ipoque/ipoque_wipro/etc/mandelbrot_config.yml"; // debug
+	config_path = "/home/jens/Schreibtisch/ipoque/ipoque_wipro/etc/mandelbrot_config_case_1.yml"; // debug
 
 	YAML::Node config_reader = YAML::LoadFile(config_path); 
 

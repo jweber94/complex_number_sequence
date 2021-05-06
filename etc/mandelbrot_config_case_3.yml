@@ -8,5 +8,5 @@ N_ymax: 500
 R_c: 100
 reInsert: -0.75
 imInsert: 0.1
-nameResult: result.dat
+nameResult: result_case_3.dat
 maxIterations: 50
