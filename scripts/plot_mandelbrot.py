@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 
 import matplotlib.pyplot as plt
-from matplotlib import transforms
 import numpy as np
-import csv
 import argparse
 
 parser = argparse.ArgumentParser(description="Pass path to the data storage location")

@@ -24,5 +24,9 @@ RUN make -j12
 # install the neccessary python packages
 RUN pip3 install numpy && pip3 install matplotlib 
 
+# make the python plot script executable without calling python explicitly
+WORKDIR /mandelbrot_project/my_code/scripts
+RUN chmod u+x plot_mandelbrot.py
+
 # go to the repo-folder in the container
 WORKDIR /mandelbrot_project/my_code
