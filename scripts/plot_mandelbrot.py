@@ -4,9 +4,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 
-parser = argparse.ArgumentParser(description="Pass path to the data storage location")
-parser.add_argument("-p", "--path", type=str, help="Path to the result data of run_mandelbrot that should be plotted.")
-parser.add_argument("-r", "--result", type=str, help="(Path and) Name of the resulting image.")
+parser = argparse.ArgumentParser(description=\
+    "Pass path to the data storage location")
+parser.add_argument("-p", "--path", type=str, \
+    help="Path to the result data of run_mandelbrot that should be plotted.")
+parser.add_argument("-r", "--result", type=str,\
+     help="(Path and) Name of the resulting image.")
 
 def load_data(path_to_data):
     my_data = np.genfromtxt(path_to_data, delimiter=' ')
@@ -18,7 +21,7 @@ def load_data(path_to_data):
 def reshape_conv_list_to_image(re_list, im_list, conv_rad_list):
     n_re = int(re_list[-1]) + 1
     n_im = int(im_list[-1]) + 1
-    conv_radius_list = conv_radius_list.reshape((n_re, n_im))
+    conv_radius_list = conv_rad_list.reshape((n_re, n_im))
     return conv_radius_list
 
 def plt_and_save(conv_rad_map, output_name):
@@ -46,7 +49,8 @@ def main():
     # plot and save
     plt_and_save(conv_radius_map, result_img_name)
 
-    print("Plotting finished. You can find the result in " + str(result_img_name))
+    print("Plotting finished. You can find the result in " \
+        + str(result_img_name))
 
 if __name__ == "__main__":
     main()
