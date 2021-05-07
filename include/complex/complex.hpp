@@ -5,12 +5,12 @@ class MyComplex {
 
 public:
   // constructors
-  MyComplex();
+  MyComplex() = default;
   MyComplex(const double xVal, const double yVal);
   MyComplex(const MyComplex &complexNumber);
 
   // destructors
-  ~MyComplex();
+  ~MyComplex() = default;
 
   // operators
   const MyComplex operator+(const MyComplex &additionComplex) const;

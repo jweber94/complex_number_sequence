@@ -4,11 +4,7 @@
 
 #include "complex.hpp"
 
-using namespace std;
-
 // constructors
-MyComplex::MyComplex(){};
-
 MyComplex::MyComplex(const double xVal, const double yVal) {
   this->x = xVal;
   this->y = yVal;
@@ -18,9 +14,6 @@ MyComplex::MyComplex(const MyComplex &complexNumber) {
   this->x = complexNumber.x;
   this->y = complexNumber.y;
 };
-
-// destructors
-MyComplex::~MyComplex(){};
 
 // operators
 const MyComplex MyComplex::operator+(const MyComplex &additionComplex) const {
@@ -124,6 +117,6 @@ void MyComplex::setRe(double newRe) { this->x = newRe; };
 void MyComplex::setIm(double newIm) { this->y = newIm; };
 
 void MyComplex::printComponents() {
-  cout << "x: " << this->x << "\n";
-  cout << "y: " << this->y << "\n";
+  std::cout << "x: " << this->x << "\n";
+  std::cout << "y: " << this->y << "\n";
 };

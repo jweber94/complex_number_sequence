@@ -9,25 +9,22 @@
 
 int main() {
 
-  using namespace std;
-
   // parse the config for the run
   std::string config_path;
   std::cout << "Please insert the input path\n";
   std::cin >> config_path;
   std::cout << "\n";
-
   YAML::Node config_reader = YAML::LoadFile(config_path);
 
   run_config config_vars;
-  ofstream resultStream;
+  std::ofstream resultStream;
 
   load_run_configuration(config_reader, config_vars);
 
-  cout << "Calculation started, please wait!\n";
+  std::cout << "Calculation started, please wait!\n";
   calculate_convergence_radius(resultStream, config_vars);
-  cout << "Calculation finished. Saved result in "
-       << config_reader["nameResult"].as<string>() << "\n";
+  std::cout << "Calculation finished. Saved result in "
+       << config_reader["nameResult"].as<std::string>() << "\n";
 
   return 0;
 }
