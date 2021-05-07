@@ -48,3 +48,4 @@ These are possible next steps for the mini-project. There was not enough time to
 + Include doxygen
 + Create a gitlab CI/CD or Github-Actions Pipeline for Unit-Testing, Linting and create the documentation automatically
 + Think about parallelizing the calculation with threads or openMP
++ Extend the python plot script to scrape all *.dat files in a folder and save them as images 
