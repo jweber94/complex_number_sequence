@@ -13,9 +13,12 @@
 This project is based on the homework of the KIT lecture "Wissenschaftliches Programmieren für Ingenieure" in the WS 18/19. The aim of the homework was to show of object oriented programming, especially the operator overloading principle. Therefore, an own implementation of a complex number datatype _MyComplex_ was implemented. (If I need to use a complex number in a real world project, of course I would use math library like cmath or eigen.)
 After implementing a proper complex number class, the calculation of the a complex number set (called "mandelbrot set" (https://de.wikipedia.org/wiki/Mandelbrot-Menge)) is implemented in the main with the help of the functions in _mandelbrot_utils_.
 To make the calculation a little more interesting, we analyze three different complex number sets. These are the following:
-+ <img src="https://latex.codecogs.com/svg.latex?\Large&space;z_{i+1} = z_i^2 + c" title="z_{i+1} = z_i^2 + c" /> , with <img src="https://latex.codecogs.com/svg.latex?\Large&space;c = const" title="c = const" />
-+ <img src="https://latex.codecogs.com/svg.latex?\Large&space;z_{i+1} = z_i^2 + c" title="z_{i+1} = z_i^2 + c" /> , with <img src="https://latex.codecogs.com/svg.latex?\Large&space;c = n_x*\delta_x + i*n_y*\delta_y" title="c = n_x*\delta_x + i*n_y*\delta_y" />
-+ <img src="https://latex.codecogs.com/svg.latex?\Large&space;z_{i+1} = z_i^4 + c" title="z_{i+1} = z_i^4 + c" /> , with <img src="https://latex.codecogs.com/svg.latex?\Large&space;c = n_x*\delta_x + i*n_y*\delta_y" title="c = n_x*\delta_x + i*n_y*\delta_y" />
+
++ ![\Large z_{i+1} = z_i^2 + c](https://latex.codecogs.com/svg.latex?z_{i+1}%3Dz_i^2%20+c) , with ![\Large c = const](https://latex.codecogs.com/svg.latex?c%3Dconst)
+
++ ![\Large z_{i+1} = z_i^2 + c](https://latex.codecogs.com/svg.latex?z_{i+1}%3Dz_i^2%20+c) , with ![\Large c = n_x*\delta_x + i*n_y*\delta_y](https://latex.codecogs.com/svg.latex?c%3Dn_x\delta_x%20+%20i%20n_y\delta_y)
+
++ ![\Large z_{i+1} = z_i^4 + c](https://latex.codecogs.com/svg.latex?z_{i+1}%3Dz_i^4%20+c) , with ![\Large c = n_x*\delta_x + i*n_y*\delta_y](https://latex.codecogs.com/svg.latex?c%3Dn_x\delta_x%20+%20i%20n_y\delta_y)
 
 # Usage
 To make the code run on all machines and OS, I created a _Dockerfile_ to create a Docker Image/Container to run the code within a Ubuntu 18.04 emulation.
