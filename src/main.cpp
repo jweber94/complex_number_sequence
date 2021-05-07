@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <stdlib.h>
 #include <string>
 #include <yaml-cpp/yaml.h>
 
@@ -16,7 +15,7 @@ int main() {
   std::cout << "\n";
   YAML::Node config_reader = YAML::LoadFile(config_path);
 
-  run_config config_vars;
+  run_config config_vars{};
   std::ofstream resultStream;
 
   load_run_configuration(config_reader, config_vars);

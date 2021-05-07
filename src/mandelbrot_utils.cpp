@@ -84,8 +84,8 @@ void calculate_convergence_radius(std::ofstream &out_stream,
   double delta_x;
   double delta_y;
   int n_iter_temp;
-  MyComplex z_0;
-  MyComplex c_0;
+  MyComplex z_0{};
+  MyComplex c_0{};
   int (*update_formula)(MyComplex & z_0, MyComplex & c_0, const double x_0,
                         const double y_0, const double delta_x,
                         const double delta_y, const int i, const int j,
