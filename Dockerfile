@@ -2,7 +2,9 @@ FROM ubuntu:18.04
 ENV name="manedelbrot_example"
 
 RUN apt-get update && \
-    apt-get install -y vim git cmake build-essential python3-pip gnuplot tmux
+    apt-get install -y vim \
+    git cmake build-essential \
+    python3-pip gnuplot tmux
 
 WORKDIR /mandelbrot_project
 
@@ -16,6 +18,7 @@ RUN make install
 #  copy the code from the repo into the container 
 WORKDIR /mandelbrot_project/my_code
 COPY . /mandelbrot_project/my_code/
+RUN rm -rf results && mkdir results
 WORKDIR /mandelbrot_project/my_code/build
 RUN rm -rf *
 RUN cmake ..
