@@ -3,8 +3,8 @@
 + clean up the main DONE
 + dockerize the project DONE
 + write the README to make the project usable DONE
-+ create a python plot script
-+ Clean up the docker Image naming
++ create a python plot script DONE 
++ Clean up the docker Image naming DONE
 + Clean up the code, especially mandelbrot_utils.cpp --> maybe change to OO 
 + Rework the README
 
@@ -19,20 +19,24 @@ To make the calculation a little more interesting, we analyze three different co
 # Usage
 To make the code run on all machines and OS, I created a _Dockerfile_ to create a Docker Image/Container to run the code within a Ubuntu 18.04 emulation. 
 In order to make it run, you have to build the docker: 
-    $ docker build .
+    $ docker build -t "test:mandelbrot_image" .
 Look for the latest docker image ID on your machine
     $ docker ps
 Then you can go into the docker with a terminal: 
-    $ docker run -it --name mandelbrot_container -v /path/to/your/desired/results/dir:/mandelbrot_project/my_code/results _Image-ID_ /bin/bash
+    $ docker run -it --name mandelbrot_container -v /path/to/your/desired/results/dir:/mandelbrot_project/my_code/results mandelbrot_image /bin/bash
 To go in the container with a second terminal
     $ docker exec -it mandelbrot_container /bin/bash
 Now you are in the docker with the repository folder. You forwarded the folder /path/to/your/desired/results/dir from your local OS installation to the docker so that you write the result files to you local machine if the use the -v (--volume) flag.
 
-Now you are able to run the code. In /mandelbrot_project/my_code/build you can find the _run_mandelbrot_ executable. If you execute it, you will get asked to provide a config file. You can find a reference for the structure and three examples of config-files in the folder /etc. After the execution, there will be result-files in the /build folder. These will read in to the python plot scripts. 
+Now you are able to run the code. In /mandelbrot_project/my_code/build you can find the _run_mandelbrot_ executable. If you execute it, you will get asked to provide a config file. You can find a reference for the structure and three examples of config-files in the folder /etc. You can choose one of by giving them the relative path.(eg. ../etc/mandelbrot_condig_case_1.yml) After the execution, there will be result-files in the /build folder. These will read in to the python plot scripts. 
 
 To run the python plot-scripts, go to the folder /scripts. With the execution of 
-    # ./plot_mandelbrot.py --file /path/to/result.dat
-a plot of the complex convergency will be saved in /results. 
+    # ./plot_mandelbrot.py --file /path/to/result.dat --result /path/to/save/image.jpeg
+a plot of the complex convergency will be saved in /path/to/save/image.jpeg. To know more about the plot script, type
+    # ./plot_mandelbrot.py --help
+You can also use the gnuplot script _plot_result.gp_ by using:
+    # gnuplot plot_result.gp
+Prerequisite for this is the naming convention of the result files (for more information, look into the .gp script) and they must be in the same folder as the plot_result.gp script. 
 
 # Possible next steps for the project
 These are possible next steps for the mini-project. There was not enough time to do this in Order to hand you a little code project in. I would like to do/rework the followning things: 

@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 ENV name="manedelbrot_example"
 
 RUN apt-get update && \
-    apt-get install -y vim git cmake build-essential python3-pip
+    apt-get install -y vim git cmake build-essential python3-pip gnuplot tmux
 
 WORKDIR /mandelbrot_project
 
@@ -17,6 +17,7 @@ RUN make install
 WORKDIR /mandelbrot_project/my_code
 COPY . /mandelbrot_project/my_code/
 WORKDIR /mandelbrot_project/my_code/build
+RUN rm -rf *
 RUN cmake ..
 RUN make -j12
 

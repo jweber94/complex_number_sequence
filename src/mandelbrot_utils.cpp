@@ -146,7 +146,6 @@ void calculate_convergence_radius(std::ofstream & out_stream, const run_config &
 				exit(0);
 			}
 		}
-		out_stream<<"\n";
 	}
 	out_stream.close();
 }

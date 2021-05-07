@@ -13,10 +13,9 @@ int main (){
 
 	// parse the config for the run
 	std::string config_path;
-	// std::cout << "Please insert the input path\n";  
-	// std::cin >> config_path; 
-	// std::cout << "\n"; 
-	config_path = "/home/jens/Schreibtisch/ipoque/ipoque_wipro/etc/mandelbrot_config_case_1.yml"; // debug
+	std::cout << "Please insert the input path\n";  
+	std::cin >> config_path; 
+	std::cout << "\n"; 
 
 	YAML::Node config_reader = YAML::LoadFile(config_path); 
 

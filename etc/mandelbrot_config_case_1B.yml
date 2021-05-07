@@ -7,6 +7,6 @@ N_xmax: 750
 N_ymax: 500
 R_c: 100
 reInsert: -0.75
-imInsert: 0.1
-nameResult: result_case_1.dat
-maxIterations: 50
+imInsert: 0.55
+nameResult: ergebnis1B.dat
+maxIterations: 200
