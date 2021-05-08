@@ -1,4 +1,4 @@
-#include "mandelbrot_utils.cpp"
+#include "complex_seq_utils.hpp"
 #include <iostream>
 
 int main() {

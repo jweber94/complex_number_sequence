@@ -1,4 +1,4 @@
-#include "mandelbrot_utils.hpp"
+#include "complex_seq_utils.hpp"
 
 #include <iostream>
 #include <yaml-cpp/yaml.h>
