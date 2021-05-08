@@ -4,30 +4,9 @@
 #include "complex.hpp"
 
 #include <fstream>
-#include <string>
-#include <yaml-cpp/yaml.h> // momentan noch für load_run_configuration notwendig --> kann vermutlich bald geloescht werden, weil in c++ includes only notwendig
 
 namespace calculation_utils
 {
-
-// util functions
-int update_rule_case_1(MyComplex &z_0, MyComplex &c_0, const double x_0,
-                       const double y_0, const double delta_x,
-                       const double delta_y, const int i, const int j,
-                       double R_c, int maxIterations);
-
-int update_rule_case_2(MyComplex &z_0, MyComplex &c_0, const double x_0,
-                       const double y_0, const double delta_x,
-                       const double delta_y, const int i, const int j,
-                       double R_c, int maxIterations);
-
-int update_rule_case_3(MyComplex &z_0, MyComplex &c_0, const double x_0,
-                       const double y_0, const double delta_x,
-                       const double delta_y, const int i, const int j,
-                       double R_c, int maxIterations);
-                       
-int calcNumConvergence(MyComplex &z_i_1, MyComplex &c, int n, double r_c,
-                       size_t n_max);
 
 struct new_run_config {
   int calculation_case;
@@ -86,49 +65,16 @@ private:
   std::string name_result_;
   size_t max_iterations_;
   std::ofstream output_stream; 
+  MyComplex z_0_; 
+  MyComplex c_0_; 
   int (*update_formula_)(MyComplex & z_0, MyComplex & c_0, const double x_0,
                         const double y_0, const double delta_x,
                         const double delta_y, const int i, const int j,
                         double R_c, int maxIterations); 
-  MyComplex z_0_; 
-  MyComplex c_0_; 
-
 }; 
 
-} // namespace calculation_utils
-
-
-
-
-
-
-
-
-
-
-
-/* Code before refactoring*/
-/*
-struct run_config {
-  int numIter;
-  double x_0, y_0, x_M, y_M;
-  int N_xmax, N_ymax;
-  int n;
-  double R_c;
-  double reInsert, imInsert;
-  std::string nameResult;
-  size_t maxIterations;
-};
-
-int calcNumConvergence(MyComplex &z_i_1, MyComplex &c, int n, double r_c,
-                       size_t n_max);
-
-void load_run_configuration(YAML::Node &yaml_reader,
-                            const run_config &config_struct);
-
-void calculate_convergence_radius(std::ofstream &out_stream,
-                                  const run_config &run_configuration);
-
+namespace calculation_rules
+{
 int update_rule_case_1(MyComplex &z_0, MyComplex &c_0, const double x_0,
                        const double y_0, const double delta_x,
                        const double delta_y, const int i, const int j,
@@ -143,5 +89,11 @@ int update_rule_case_3(MyComplex &z_0, MyComplex &c_0, const double x_0,
                        const double y_0, const double delta_x,
                        const double delta_y, const int i, const int j,
                        double R_c, int maxIterations);
-*/
+                       
+int calcNumConvergence(MyComplex &z_i_1, MyComplex &c, int n, double r_c,
+                       size_t n_max);
+
+} // calculation_rules
+} // namespace calculation_utils
+
 #endif /* MANDELBROT_UTILS */

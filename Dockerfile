@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get install -y vim \
     git cmake build-essential \
     python3-pip gnuplot tmux \
-    clang-tidy 
+    clang-tidy eog
 
 WORKDIR /mandelbrot_project
 
