@@ -49,7 +49,6 @@ To access the result images from outside the docker container, you have to copy 
 
 # Possible next steps for the project
 These are possible next steps for the mini-project. There was not enough time to do this in Order to hand you a little code project in. I would like to do/rework the followning things:
-+ Define a Linting-Standart (e.g with clang-tidy) and rework the code based on it
 + Include Unit-Testing for the operators of MyComplex to make the code more trustworthy if you change basic functionallitiys
 + Include doxygen
 + Create a gitlab CI/CD or Github-Actions Pipeline for Unit-Testing, Linting and create the documentation automatically
