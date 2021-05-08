@@ -4,10 +4,10 @@ ENV name="complex_sequence"
 RUN apt-get update && \
     apt-get install -y vim \
     git cmake build-essential \
-    python3-pip gnuplot tmux \
+    python3-pip tmux \
     clang-tidy eog
 
-WORKDIR /complex_seq_project
+WORKDIR /complex_number_sequence
 
 # install yaml-cpp
 RUN git clone https://github.com/jbeder/yaml-cpp.git
