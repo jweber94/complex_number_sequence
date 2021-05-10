@@ -26,11 +26,11 @@ RUN cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 RUN make -j12
 
 # install the neccessary python packages
-RUN pip3 install numpy && pip3 install matplotlib
+RUN pip3 install numpy && pip3 install matplotlib && pip3 install pep8
 
 # make the python plot script executable without calling python explicitly
 WORKDIR /complex_number_sequence/my_code/scripts
-RUN chmod u+x plot_cplx_seq.py
+RUN chmod a+x plot_cplx_seq.py
 
 # go to the repo-folder in the container
 WORKDIR /complex_number_sequence/my_code
