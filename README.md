@@ -36,7 +36,7 @@ Now you are able to run the code. In ```/complex_number_sequence/my_code/build``
 
 To run the python plot-script, go to the folder ```/scripts```. With the execution of
 
-    # ./plot_cplx_seq.py --file /path/to/result.dat --result /path/to/save/image.jpeg
+    # ./plot_cplx_seq.py --path /path/to/result.dat --result /path/to/save/image.jpeg
 
 a plot of the convergency will be saved in ```/path/to/save/image.jpeg```.
 Example:
@@ -84,5 +84,6 @@ The project is meant to be docker based. You can see the requirements to run it 
 The following next steps are possible for the mini-project.
 + Include Unit-Testing for the operators of MyComplex to make the code more trustworthy to changes
 + Create a gitlab CI/CD or Github-Actions Pipeline for Unit-Testing, Linting and create the documentation automatically
-+ Think about parallelizing the calculation with pthreads or OpenMP
++ Think about parallelizing the calculation with pthreads or OpenMP, use preallocation and write out the results with one function call at the end 
 + Extend the python plot script to scrape all *.dat files in a folder and save them as images
++ Add an exception class to get better diagnosing functionalities

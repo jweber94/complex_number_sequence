@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(yaml-cpp REQUIRED)
 
 add_executable(run_cplx_seq src/main.cpp)
-target_include_directories(run_cplx_seq PRIVATE include/complex)
-target_link_libraries(run_cplx_seq PRIVATE my_complex yaml-cpp)
+target_include_directories(run_cplx_seq PRIVATE include/complex_lib)
+target_link_libraries(run_cplx_seq PRIVATE my_complex_lib yaml-cpp)
 
-add_library(my_complex src/complex.cpp src/complex_seq_utils.cpp)
-target_include_directories(my_complex PUBLIC include/complex)
+add_library(my_complex_lib src/complex_lib/complex.cpp src/complex_lib/config_reader.cpp src/complex_lib/calculation_runner.cpp)
+target_include_directories(my_complex_lib PUBLIC include/complex_lib)
