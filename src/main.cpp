@@ -22,7 +22,7 @@ int main() {
               << e.what() << "\n";
   } catch (...) {
     std::cerr
-        << "An unknown expection was thrown. Please inform the maintainer.\n";
+        << "An unknown exeption was thrown. Please inform the maintainer.\n";
   }
 
   return 0;
