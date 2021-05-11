@@ -1,6 +1,5 @@
-//#include "complex_seq_utils.hpp"
-#include "config_reader.hpp"
 #include "calculation_runner.hpp"
+#include "config_reader.hpp"
 #include <iostream>
 
 int main() {
@@ -11,14 +10,12 @@ int main() {
   std::cin >> config_path;
 
   try {
-    // init
     calculation_utils::ConfigurationLoader config_loader(config_path);
     calculation_utils::CalculationRunner calc_runner(config_loader);
 
     calc_runner.run_calculation();
-
-    std::cout
-        << "Finished with the calculation of the given complex number series\n";
+    
+    std::cout<< "Finished calculation and saved the result.\n";
   } catch (const std::exception &e) {
     std::cerr << "ERROR: Something went wrong. Please check the config file "
                  "and/or inform the maintainer.\nError-Code: "

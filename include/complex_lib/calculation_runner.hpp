@@ -59,9 +59,9 @@ int update_rule_case_3(MyComplex &z_0, MyComplex &c_0, const double x_0,
                        double R_c, int maxIterations);
 
 int calc_num_convergence(MyComplex &z_i_1, MyComplex &c, int n, double r_c,
-                       size_t n_max);
+                         size_t n_max);
 
-} // namespace calculation_rules
+} // namespace calculation_definitions
 } // namespace calculation_utils
 
 #endif /* CALCRUNNER */

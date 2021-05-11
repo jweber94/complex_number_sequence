@@ -1,6 +1,6 @@
 #include "calculation_runner.hpp"
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace calculation_utils {
 
@@ -94,13 +94,14 @@ void CalculationRunner::save_calculation_step(int idx_i, int idx_j,
 
 namespace calculation_definitions {
 int calc_num_convergence(MyComplex &z_i_1, MyComplex &c, int n, double r_c,
-                       size_t n_max) {
+                         size_t n_max) {
   MyComplex resultIteration_i = z_i_1;
 
   // convergency calculation
   for (size_t i = 0; i < n_max; i++) {
     resultIteration_i = (resultIteration_i ^ n) + c;
-    if (resultIteration_i.norm() >= r_c) { // calc num iterations until convergence
+    if (resultIteration_i.norm() >=
+        r_c) { // calc num iterations until convergence
       return i;
     }
   }
@@ -151,5 +152,5 @@ int update_rule_case_3(MyComplex &z_0, MyComplex &c_0, const double x_0,
 
   return step_result;
 }
-} // namespace calculation_rules
+} // namespace calculation_definitions
 } // namespace calculation_utils

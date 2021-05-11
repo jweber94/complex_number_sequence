@@ -43,9 +43,9 @@ MyComplex MyComplex::operator-(const double &subtractionConstant) const {
 MyComplex MyComplex::operator*(const MyComplex &multiplicationComplex) const {
   MyComplex resultMultiplCompl;
   resultMultiplCompl.x_ = this->x_ * multiplicationComplex.real() -
-                         this->y_ * multiplicationComplex.imag();
+                          this->y_ * multiplicationComplex.imag();
   resultMultiplCompl.y_ = this->x_ * multiplicationComplex.imag() +
-                         multiplicationComplex.real() * this->y_;
+                          multiplicationComplex.real() * this->y_;
   return resultMultiplCompl;
 };
 
