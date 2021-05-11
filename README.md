@@ -17,8 +17,18 @@ Thereby is ![\Large \delta_{x}=\frac{Re(z_{upper}) - Re(z_{lower})}{N_{xmax}}](h
 The described formulas are inspired by the recursive calculation of the mandelbrot set (https://de.wikipedia.org/wiki/Mandelbrot-Menge).
 
 # Usage
+The following instructions are described for Linux/MacOS. They can also be transferred to Windows with a few adjustments.
+
+Open up a terminal and clone the code to your local machine  
+
+    $ git clone https://github.com/jweber94/complex_number_sequence.git
+
+Then, go into the cloned folder
+
+    $ cd complex_number_sequence
+
 To make the code run on all machines/OS, I created a _Dockerfile_ for building a Docker Image/Container to run the code within an Ubuntu 18.04 emulation.
-In order to make it run, you have to build the docker (this might take a while):
+In order to make it run, you have to build the docker (this might take a while, depending on your internet connection and hardware):
 
     $ docker build -t "proj:complex_image" .
 
@@ -32,36 +42,49 @@ To go into the container with a second terminal, you can use:
 
 Now you are in the docker within the repository folder. You forwarded the folder ```/path/to/your/desired/results/dir``` from your local OS installation to the docker in order to write the result files to your local machine if you use the ```-v (--volume)``` flag.
 
-Now you are able to run the code. In ```/complex_number_sequence/my_code/build``` you can find the _run_cplx_seq_ executable. If you execute it, you will get asked to provide a configuration file. You can find a reference for the structure and five examples of config-files in the folder ```/etc```. You can choose one of them by giving them the relative path. (eg. ```../etc/complex_config_case_1A.yml```) After the execution, there will be a result file (<NameFromConfig>.dat) in the ```/build``` folder. This file is readable for the python plot script.
+Now you are able to run the code. In ```/complex_number_sequence/my_code/build``` you can find the _run_cplx_seq_ executable. 
+Go into the folder and start the executable with 
 
-To run the python plot-script, go to the folder ```/scripts```. With the execution of
+    # cd ./build
+    # ./run_cplx_seq
+
+If you execute it, you will get asked to provide a configuration file. You can find a reference for the structure and five examples of config-files in the folder ```/etc```. You can choose one of them by giving them the relative path. (eg. ```../etc/complex_config_case_1A.yml```) After the execution, there will be a result file (<NameFromConfig>.dat) in the ```/build``` folder. This file is readable for the python plot script.
+
+To run the python plot-script, go to the folder ```/scripts```, with 
+
+    # cd ../scripts
+
+and start the execution of plot script with
 
     # ./plot_cplx_seq.py --path /path/to/result.dat --result /path/to/save/image.jpeg
 
-a plot of the convergency will be saved in ```/path/to/save/image.jpeg```.
-Example:
+Then, a plot of the convergency will be saved in ```/path/to/save/image.jpeg```.
+Example usage:
 
     # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/nameImage.jpeg
-
-To know more about the plot script, type
-
-    # ./plot_cplx_seq.py --help
 
 Example:
 
     # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/ergebnis1A.jpeg
 
-To access the result images from outside the docker container, you have to copy the _nameImage.jpeg_ within the docker container to the directory ```/results``` (which is at the beginning an empty folder).  
+To know more about the plot script, you can type
+
+    # ./plot_cplx_seq.py --help
+
+To access the result images from outside the docker container, you have to copy the _nameImage.jpeg_ within the docker container to the directory ```/results``` or write the results from the plot-script directly to this folder, like in the given example.  
 
 CAUTION: If you write files to ```results```, they will be owned by root. Please change the owner rights before exiting the container with
 
+    # cd ../results
     # chown -R <UserID>:<GroupID> <filename>
 
-If you don't do this, you won't be able to delete the created files on your host system without root or sudo access. Check your user-ID with
+If you don't do this, you won't be able to delete the created files on your host system without root or sudo access. Check your user-ID and group-ID ***on your local machine*** with
 
-    # cat /etc/passwd
+    # cat /etc/passwd | grep <YourUsername>
 
-and look for your username. The colon separated number couples after the ```x:``` is what you are looking for.
+The colon separated number couples after the ```x:``` is what you are looking for.
+
+You can exit the docker container with ```strg+d```. 
 
 # Explanation of the configuration setup in ```/etc```:
 + ```case```: Calculation case (I, II or III from "Mathmatical explaination")
