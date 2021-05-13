@@ -1,11 +1,11 @@
 #include "calculation_runner.hpp"
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
 
 namespace calculation_utils {
 
 CalculationRunner::CalculationRunner(const ConfigurationLoader &config_loader) {
-  new_run_config temp_run_config = config_loader.get_run_config();
+  run_config temp_run_config = config_loader.get_run_config();
 
   // set the run member variables based on the given config
   this->case_num_ = temp_run_config.calculation_case;
@@ -153,4 +153,15 @@ int update_rule_case_3(MyComplex &z_0, MyComplex &c_0, const double x_0,
   return step_result;
 }
 } // namespace calculation_definitions
+
+std::ostream &operator<<(std::ostream &stream, CalculationRunner &cr) {
+  stream << "case_number:\t" << cr.case_num_ << "\nN_xmax:\t\t" << cr.N_xmax_
+         << "\nN_ymax:\t\t" << cr.N_ymax_ << "\nx_lower_bound:\t"
+         << cr.x_lower_bound_ << "\nx_upper_bound:\t" << cr.x_upper_bound_
+         << "\ny_lower_bound:\t" << cr.y_lower_bound_ << "\ny_upper_bound:\t"
+         << cr.y_upper_bound_ << "\nR_c:\t\t" << cr.R_c_ << "\nc_0_real:\t"
+         << cr.c_0_re_ << "\nc_0_imag:\t" << cr.c_0_im_ << "\nname_result:\t"
+         << cr.name_result_;
+  return stream;
+}
 } // namespace calculation_utils

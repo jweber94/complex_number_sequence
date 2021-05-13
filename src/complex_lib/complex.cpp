@@ -129,3 +129,8 @@ void MyComplex::printComponents() {
   std::cout << "x: " << this->x_ << "\n";
   std::cout << "y: " << this->y_ << "\n";
 };
+
+std::ostream &operator<<(std::ostream &stream, MyComplex &cplx) {
+  stream << cplx.x_ << "+ i" << cplx.y_;
+  return stream;
+}

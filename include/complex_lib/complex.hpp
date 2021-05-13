@@ -1,6 +1,8 @@
 #ifndef MYCOMPLEX
 #define MYCOMPLEX
 
+#include <iostream>
+
 class MyComplex {
 
 public:
@@ -23,6 +25,7 @@ public:
   MyComplex operator^(const int &a);
   MyComplex operator/(const MyComplex &complexDivisionNum) const;
   MyComplex &operator=(const MyComplex &assignmentComplex);
+  friend std::ostream &operator<<(std::ostream &stream, MyComplex &cplx);
 
   // methods
   double norm() const;

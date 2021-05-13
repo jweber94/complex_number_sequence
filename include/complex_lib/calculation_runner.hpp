@@ -19,6 +19,9 @@ public:
   // methods
   void run_calculation();
 
+  // operators
+  friend std::ostream &operator<<(std::ostream &stream, CalculationRunner &cr);
+
 private:
   // methods
   void save_calculation_step(int idx_i, int idx_j, int conv_rad);

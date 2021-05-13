@@ -6,7 +6,7 @@
 
 namespace calculation_utils {
 
-struct new_run_config {
+struct run_config {
   // Interface between ConfigurationLoader class and CalculatonRunner class to
   // decouple the development of the two classes (for extensions in the future)
   int calculation_case;
@@ -29,11 +29,16 @@ public:
   ~ConfigurationLoader() = default;
 
   // methods
-  const new_run_config get_run_config() const;
+  const run_config get_run_config() const;
+
+  // operators
+  friend std::ostream &operator<<(std::ostream &outstream,
+                                  calculation_utils::ConfigurationLoader &cf);
 
 private:
   // members
-  new_run_config calc_configuration_;
+  run_config calc_configuration_;
+  std::string path_;
 };
 } // namespace calculation_utils
 
