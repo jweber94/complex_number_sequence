@@ -23,7 +23,7 @@ class ConfigurationLoader {
 public:
   // constructors
   ConfigurationLoader() = delete;
-  ConfigurationLoader(const std::string &path_to_condfig);
+  ConfigurationLoader(const std::string &path_to_config);
 
   // destructors
   ~ConfigurationLoader() = default;
