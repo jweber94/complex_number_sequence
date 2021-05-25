@@ -1,13 +1,39 @@
 #include "calculation_runner.hpp"
 #include "config_reader.hpp"
+#include <boost/filesystem.hpp>
+#include <boost/program_options.hpp>
 #include <iostream>
+#include <stdlib.h>
+#include <string>
 
-int main() {
+int main(int argc, const char *argv[]) {
 
-  // parse the config for the run
-  std::string config_path;
-  std::cout << "Please insert the input path\n";
-  std::cin >> config_path;
+  // command line parser
+  boost::program_options::options_description desc{"Options"};
+  boost::program_options::variables_map vm;
+  std::string config_path = "none";
+
+  desc.add_options()("help,h",
+                     "Help and overview of all possible command line options")(
+      "path,p",
+      boost::program_options::value<std::string>()->default_value("none"),
+      "Path to the configuration file");
+
+  boost::program_options::store(
+      boost::program_options::parse_command_line(argc, argv, desc), vm);
+  boost::program_options::notify(vm);
+
+  config_path = vm["path"].as<std::string>();
+
+  if (vm.count("help")) {
+    std::cout << desc << "\n";
+    exit(0);
+  }
+  if ((config_path == "none") || !(boost::filesystem::exists(config_path))) {
+    std::cerr << "The path to the config is not valid. Please check your "
+                 "config path after --path /path/to/your/config.yml\n";
+    exit(0);
+  }
 
   try {
     calculation_utils::ConfigurationLoader config_loader(config_path);

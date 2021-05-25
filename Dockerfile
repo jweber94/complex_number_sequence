@@ -5,7 +5,8 @@ RUN apt-get update && \
     apt-get install -y vim \
     git cmake build-essential \
     python3-pip tmux \
-    clang-tidy eog
+    clang-tidy eog \
+    libboost-all-dev
 
 WORKDIR /complex_number_sequence
 
