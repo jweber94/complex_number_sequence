@@ -46,9 +46,11 @@ Now you are able to run the code. In ```/complex_number_sequence/my_code/build``
 Go into the folder and start the executable with 
 
     # cd ./build
-    # ./run_cplx_seq
+    # ./run_cplx_seq --path ../etc/<your_config_file>
 
-If you execute it, you will get asked to provide a configuration file. You can find a reference for the structure and five examples of config-files in the folder ```/etc```. You can choose one of them by giving them the relative path. (eg. ```../etc/complex_config_case_1A.yml```) After the execution, there will be a result file (<NameFromConfig>.dat) in the ```/build``` folder. This file is readable for the python plot script.
+If you execute it, you need to hand it a configuration file with the ```--path /path/to/your/config.yml```. You can find a reference for the structure and five examples of config-files in the folder ```/etc```. You can choose one of them by giving them the relative path. (eg. ```../etc/complex_config_case_1A.yml```) After the execution, there will be a result file (<NameFromConfig>.dat) in the ```/build``` folder. This file is readable for the python plot script. You can get an overview of all command line arguments of the executable with 
+
+    # ./run_cplx_seq --help
 
 To run the python plot-script, go to the folder ```/scripts```, with 
 
