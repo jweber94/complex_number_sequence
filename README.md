@@ -58,22 +58,22 @@ To run the python plot-script, go to the folder ```/scripts```, with
 
 and start the execution of plot script with
 
-    # ./plot_cplx_seq.py --path /path/to/result.dat --result /path/to/save/image.jpeg
+    # ./plot_cplx_seq.py --path /path/to/result.dat --result /path/to/save/image.png
 
-Then, a plot of the convergency will be saved in ```/path/to/save/image.jpeg```.
+Then, a plot of the convergency will be saved in ```/path/to/save/image.png```.
 Example usage:
 
-    # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/nameImage.jpeg
+    # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/nameImage.png
 
 Example:
 
-    # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/ergebnis1A.jpeg
+    # ./plot_cplx_seq.py --path ../build/ergebnis1A.dat --result ../results/ergebnis1A.png
 
 To know more about the plot script, you can type
 
     # ./plot_cplx_seq.py --help
 
-To access the result images from outside the docker container, you have to copy the _nameImage.jpeg_ within the docker container to the directory ```/results``` or write the results from the plot-script directly to this folder, like in the given example.  
+To access the result images from outside the docker container, you have to copy the _nameImage.png_ within the docker container to the directory ```/results``` or write the results from the plot-script directly to this folder, like in the given example.  
 
 CAUTION: If you write files to ```results```, they will be owned by root. Please change the owner rights before exiting the container with
 
